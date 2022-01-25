@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=TestGestorFaltas
+comment0.text=\r\n\ Punto\ de\ entrada\ a\ la\ aplicaci\u00F3n\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment1.text=\r\n\ Se\ acepta\ como\ argumento\ del\ main()\ el\ n\u00BA\ m\u00E1ximo\ de\ estudiantes\r\n\ y\ una\ vez\ creado\ el\ gstor\ de\ faltas\ se\ muestra\ la\ informaci\u00F3n\ solicitada\r\n\ (ver\ enunciado)\r\n
+numComments=2
