@@ -21,7 +21,7 @@ public class Estudiante {
     public Estudiante(String lineaDatos) {
          
         String[] clean = lineaDatos.trim().split(SEPARADOR);
-        //nombre = clean[0];
+        nombre = clean[0];
         apellidos = clean[1].toUpperCase();
         faltasNoJustificadas = Integer.parseInt(clean[2]);
         faltasJustificadas = Integer.parseInt(clean[3]);
@@ -29,6 +29,8 @@ public class Estudiante {
     }
 
     private String nombreCompuesto(){
+        //nombre
+        // apellidos
         return null;
     }
 
