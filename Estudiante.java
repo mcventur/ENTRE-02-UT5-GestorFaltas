@@ -1,3 +1,5 @@
+import java.util.StringTokenizer;
+
 /**
  * Un objeto de esta clase guarda la información de un estudiante
  *
@@ -28,14 +30,16 @@ public class Estudiante {
 
     }
 
-    private String nombreCompuesto(){
-        //nombre
-        // apellidos
-        return null;
-    }
+    private boolean esCompuestoOSimple(){
 
-    private String nombreSimple(){
-        return null;
+        boolean compuesto = true;
+        boolean simple = false;
+
+        StringTokenizer name = new StringTokenizer(nombre);
+        if(name.countTokens()==2){
+            return compuesto;
+        }
+        return simple;
     }
 
     /**
