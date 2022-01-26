@@ -1,11 +1,16 @@
+import java.util.*;
+
 /**
  * Un objeto de esta clase guarda la información de un estudiante
  *
  */
 public class Estudiante {
+
     private final static String SEPARADOR = ",";
+
     private String nombre;
     private String apellidos;
+
     private int faltasNoJustificadas;
     private int faltasJustificadas;
 
@@ -18,9 +23,13 @@ public class Estudiante {
      */
     public Estudiante(String lineaDatos) {
          
-
+        String[] clean = lineaDatos.trim().split(",");
+        nombre = clean[0];
+        apellidos = clean[1];
+        faltasNoJustificadas = Integer.parseInt(clean[2]);
+        faltasJustificadas = Integer.parseInt(clean[3]);
+        
     }
-
 
     /**
      * accesor para el nombre completo
@@ -52,7 +61,7 @@ public class Estudiante {
     }
 
     /**
-     * accesor para el nº de faltas no justificadas
+     * accesor para el número de faltas no justificadas
      */
     public int getFaltasNoJustificadas() {
         return faltasNoJustificadas;
