@@ -1,5 +1,3 @@
-import java.util.*;
-
 /**
  * Un objeto de esta clase guarda la información de un estudiante
  *
@@ -18,12 +16,11 @@ public class Estudiante {
      *  
      *  Inicializa los atributos a partir de la información recibida
      *  Esta información se encuentra en lineaDatos
-     *  (ver enunciado) 
-     *  
+     *  (ver enunciado)
      */
     public Estudiante(String lineaDatos) {
          
-        String[] clean = lineaDatos.trim().split(",");
+        String[] clean = lineaDatos.trim().split(SEPARADOR);
         //nombre = clean[0];
         apellidos = clean[1].toUpperCase();
         faltasNoJustificadas = Integer.parseInt(clean[2]);
