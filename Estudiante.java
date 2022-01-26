@@ -28,7 +28,15 @@ public class Estudiante {
         apellidos = clean[1].toUpperCase();
         faltasNoJustificadas = Integer.parseInt(clean[2]);
         faltasJustificadas = Integer.parseInt(clean[3]);
-        
+
+    }
+
+    private String nombreCompuesto(){
+        return null;
+    }
+
+    private String nombreSimple(){
+        return null;
     }
 
     /**
