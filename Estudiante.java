@@ -24,8 +24,8 @@ public class Estudiante {
     public Estudiante(String lineaDatos) {
          
         String[] clean = lineaDatos.trim().split(",");
-        nombre = clean[0];
-        apellidos = clean[1];
+        //nombre = clean[0];
+        apellidos = clean[1].toUpperCase();
         faltasNoJustificadas = Integer.parseInt(clean[2]);
         faltasJustificadas = Integer.parseInt(clean[3]);
         
