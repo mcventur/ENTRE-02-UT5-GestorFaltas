@@ -26,6 +26,7 @@ public class Estudiante {
         String[] clean = lineaDatos.trim().split(SEPARADOR);
 
         tempNombre = clean[0].trim();
+        nombre = esSimpleOCompuesto();
         apellidos = clean[1].toUpperCase().trim();
         faltasNoJustificadas = Integer.parseInt(clean[2].trim());
         faltasJustificadas = Integer.parseInt(clean[3].trim());
@@ -40,11 +41,16 @@ public class Estudiante {
         return false;
     }
 
-    private String esSimple(){
+    private String esSimpleOCompuesto(){
         if(!tieneMas()){
-
+            nombre = tempNombre.substring(0,1).toUpperCase() + tempNombre.substring(1);
+            return nombre;
         }
-        return null;
+        String temp2nombre = tempNombre.replaceAll("\\s{2,}"," "); //Limpio los espacios entre las palabras
+        String[] complejo = temp2nombre.split(" "); // Las divido con un split para manipularlas de forma independiente
+
+
+        return nombre;
     }
 
     /**
