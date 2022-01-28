@@ -9,6 +9,7 @@ public class Estudiante {
     private final static String SEPARADOR = ",";
 
     private String nombre;
+    private String tempNombre;
     private String apellidos;
 
     private int faltasNoJustificadas;
@@ -23,23 +24,27 @@ public class Estudiante {
     public Estudiante(String lineaDatos) {
          
         String[] clean = lineaDatos.trim().split(SEPARADOR);
-        nombre = clean[0];
-        apellidos = clean[1].toUpperCase();
-        faltasNoJustificadas = Integer.parseInt(clean[2]);
-        faltasJustificadas = Integer.parseInt(clean[3]);
+
+        tempNombre = clean[0].trim();
+        apellidos = clean[1].toUpperCase().trim();
+        faltasNoJustificadas = Integer.parseInt(clean[2].trim());
+        faltasJustificadas = Integer.parseInt(clean[3].trim());
 
     }
 
-    private boolean esCompuestoOSimple(){
-
-        boolean compuesto = true;
-        boolean simple = false;
-
-        StringTokenizer name = new StringTokenizer(nombre);
-        if(name.countTokens()==2){
-            return compuesto;
+    private boolean contieneElementos(){
+        StringTokenizer name = new StringTokenizer(tempNombre);
+        if(name.hasMoreElements()){
+            return true;
         }
-        return simple;
+        return false;
+    }
+
+    private String esSimple(){
+        if(!contieneElementos()){
+
+        }
+        return null;
     }
 
     /**
