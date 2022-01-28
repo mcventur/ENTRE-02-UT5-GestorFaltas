@@ -32,16 +32,16 @@ public class Estudiante {
 
     }
 
-    private boolean contieneElementos(){
+    private boolean tieneMas(){
         StringTokenizer name = new StringTokenizer(tempNombre);
-        if(name.hasMoreElements()){
+        if(name.countTokens()>1){
             return true;
         }
         return false;
     }
 
     private String esSimple(){
-        if(!contieneElementos()){
+        if(!tieneMas()){
 
         }
         return null;
