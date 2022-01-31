@@ -10,10 +10,11 @@ import java.util.Scanner;
  *
  */
 public class GestorFaltas {
-     
-
+    Estudiante[] infoEstudiante; 
+    int total;
     public GestorFaltas(int n) {
-         
+        infoEstudiante = new Estudiante [n]; 
+        total = 0;
     }
 
     /**
@@ -21,7 +22,7 @@ public class GestorFaltas {
      * false en otro caso
      */
     public boolean cursoCompleto() {
-        return false;
+        return total == infoEstudiante.length;
     }
 
     /**
@@ -37,11 +38,30 @@ public class GestorFaltas {
      *    
      */
     public void addEstudiante(Estudiante nuevo) {
-        
-
+        if(total<infoEstudiante.length && !compararApellidos(nuevo.getApellidos()))    {
+            infoEstudiante[total] = nuevo;
+            total++;
+        }
+        else    {
+            if(total==infoEstudiante.length)    {
+                System.out.println("ERROR La lista esta completa");
+            }
+            if(compararApellidos(nuevo.getApellidos()))  {
+                System.out.println("ERROR el estudiante ya existe");
+            }
+        }
+    
     }
 
-
+    private boolean compararApellidos(String apellidos)   {
+        for(int i = 0;i<total;i++)   {
+            if(infoEstudiante[i].getApellidos().compareToIgnoreCase(apellidos)==0)    {
+                return true;
+            };
+        } 
+        return false;
+    }
+    
     /**
      * buscar un estudiante por sus apellidos
      * Si está se devuelve la posición, si no está se devuelve -1
@@ -51,8 +71,8 @@ public class GestorFaltas {
      *  
      */
     public int buscarEstudiante(String apellidos) {
-         
-        return 0;
+        int index = Integer.parseInt(infoEstudiante.indexOf(apellidos));
+        return index;
     }
 
     /**
@@ -61,11 +81,16 @@ public class GestorFaltas {
      *  
      */
     public String toString() {
-        
-        return null;
-
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0;i<total;i++) {
+        sb.append ("Apellidos y Nombre: ").append(infoEstudiante[i].getApellidos()+infoEstudiante[i].getNombre()).append("\n");
+        sb.append ("Faltas No Justificadas: ").append (infoEstudiante[i].getFaltasNoJustificadas()).append("\n");
+        sb.append ("Faltas Justificadas: ").append(infoEstudiante[i].getFaltasJustificadas()).append("\n");
+        sb.append ("Apercibimiento: ").append(" ").append("\n");
+        sb.append(infoEstudiante[i].toString());
+        }
+        return sb.toString();
     }
-
     /**
      *  Se justifican las faltas del estudiante cuyos apellidos se proporcionan
      *  El método muestra un mensaje indicando a quién se ha justificado las faltas
@@ -75,7 +100,7 @@ public class GestorFaltas {
      *  justificar también)
      */
     public void justificarFaltas(String apellidos, int faltas) {
-         
+        
 
     }
 
