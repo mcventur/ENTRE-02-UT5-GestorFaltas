@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.Arrays;
 
 /**
  * Un objeto de esta clase permite registrar estudiantes de un
@@ -10,18 +11,21 @@ import java.util.Scanner;
  *
  */
 public class GestorFaltas {
-     
+    private Estudiante[] curso;
+    private int pos;
 
-    public GestorFaltas(int n) {
-         
+    public GestorFaltas(int n) 
+    {
+        curso= new Estudiante[n];
     }
 
     /**
      * Devuelve true si el array de estudiantes está completo,
      * false en otro caso
      */
-    public boolean cursoCompleto() {
-        return false;
+    public boolean cursoCompleto() 
+    {
+        return pos==curso.length;
     }
 
     /**
@@ -36,12 +40,29 @@ public class GestorFaltas {
      *    Hay que insertar en orden 
      *    
      */
-    public void addEstudiante(Estudiante nuevo) {
+    public void addEstudiante(Estudiante nuevo) 
+    {
+        int c=0;
+        int t1=0;
         
-
+        while(c<pos)
+        {
+            String s1=curso[c].getApellidos();
+            String s2=nuevo.getApellidos();
+            if (s2.compareTo(s1)=0)
+            {
+                t1++;
+            }
+            c++;
+        }
+        if (t1==0)
+        {
+            curso[pos]=nuevo;
+            pos++;
+            Arrays.sort(curso);
+        }
     }
-
-
+    
     /**
      * buscar un estudiante por sus apellidos
      * Si está se devuelve la posición, si no está se devuelve -1
@@ -50,9 +71,20 @@ public class GestorFaltas {
      * eficiente
      *  
      */
-    public int buscarEstudiante(String apellidos) {
-         
-        return 0;
+    public int buscarEstudiante(String apellidos) 
+    {
+        int c=0;
+        int t1=-1;
+        while(c<pos && t1!=c)
+        {
+            String s1=curso[c].getApellidos();
+            if (apellidos.compareTo(s1)=0)
+            {
+                t1=c;
+            }
+            c++;
+        }
+        return t1;
     }
 
     /**
@@ -60,10 +92,10 @@ public class GestorFaltas {
      * Utiliza StringBuilder como clase de apoyo.
      *  
      */
-    public String toString() {
+    public String toString() 
+    {
         
         return null;
-
     }
 
     /**
@@ -74,9 +106,20 @@ public class GestorFaltas {
      *  Se asume todo correcto (el estudiante existe y el nº de faltas a
      *  justificar también)
      */
-    public void justificarFaltas(String apellidos, int faltas) {
-         
-
+    public void justificarFaltas(String apellidos, int faltas) 
+    {
+        int c=0;
+        int t1=-1;
+        while(c<pos && t1!=c)
+        {
+            String s1=curso[c].getApellidos();
+            if (apellidos.compareTo(s1)=0)
+            {
+                curso[c].setFaltasJustificadas(curso[c].getFaltasJustificadas()+faltas);
+                curso[c].setFaltasNoJustificadas(curso[c].getFaltasNoJustificadas()-faltas);
+            }
+            c++;
+        }
     }
 
     /**
@@ -84,18 +127,39 @@ public class GestorFaltas {
      * si coinciden se tiene en cuenta las justificadas
      * Método de selección directa
      */
-    public void ordenar() {
-        
-
+    public void ordenar() 
+    {
+            for (int i = 0; i < curso.length - 1; i++) {
+                int posmin = i;
+                for (int j = i + 1; j < curso.length; j++) {
+                    if (curso[j].getFaltasNoJustificadas() < curso[posmin].getFaltasNoJustificadas()) {
+                        posmin = j;
+                    }
+                }
+                Estudiante aux = curso[posmin];
+                curso[posmin] = curso[i];
+                curso[i] = aux;
+            }
     }
 
     /**
      * anular la matrícula (dar de baja) a 
      * aquellos estudiantes con 30 o más faltas injustificadas
      */
-    public void anularMatricula() {
-         
-
+    public void anularMatricula() 
+    {
+        int c=0;
+        int t1=-1;
+        while(c<pos && t1!=c)
+        {
+            if (curso[c].getFaltasNoJustificadas()>30)
+            {
+                curso[c]=curso[c+1];
+                pos--;
+            }
+            c++;
+        }
+        
     }
 
     /**
