@@ -16,9 +16,15 @@ public class Estudiante {
      *  (ver enunciado) 
      *  
      */
-    public Estudiante(String lineaDatos) {
-         
-
+    public Estudiante(String lineaDatos) 
+    {
+        String[] a1= new String[5];
+        a1= lineaDatos.split(SEPARADOR);
+        
+        nombre=a1[0];
+        apellidos=a1[1] + " " + a1[2];
+        faltasNoJustificadas=Integer.parseInt(a1[3]);
+        faltasJustificadas=Integer.parseInt(a1[4]);
     }
 
 
