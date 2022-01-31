@@ -55,7 +55,7 @@ public class GestorFaltas {
 
     private boolean compararApellidos(String apellidos)   {
         for(int i = 0;i<total;i++)   {
-            if(infoEstudiante[i].getApellidos().compareToIgnoreCase(apellidos))    {
+            if(infoEstudiante[i].getApellidos().compareToIgnoreCase(apellidos)==0)    {
                 return true;
             };
         } 
@@ -71,7 +71,7 @@ public class GestorFaltas {
      *  
      */
     public int buscarEstudiante(String apellidos) {
-        int index = infoEstudiante.indexOf(apellidos);
+        int index = Integer.parseInt(infoEstudiante.indexOf(apellidos));
         return index;
     }
 
@@ -81,11 +81,16 @@ public class GestorFaltas {
      *  
      */
     public String toString() {
-        
-        return null;
-
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0;i<total;i++) {
+        sb.append ("Apellidos y Nombre: ").append(infoEstudiante[i].getApellidos()+infoEstudiante[i].getNombre()).append("\n");
+        sb.append ("Faltas No Justificadas: ").append (infoEstudiante[i].getFaltasNoJustificadas()).append("\n");
+        sb.append ("Faltas Justificadas: ").append(infoEstudiante[i].getFaltasJustificadas()).append("\n");
+        sb.append ("Apercibimiento: ").append(" ").append("\n");
+        sb.append(infoEstudiante[i].toString());
+        }
+        return sb.toString();
     }
-
     /**
      *  Se justifican las faltas del estudiante cuyos apellidos se proporcionan
      *  El método muestra un mensaje indicando a quién se ha justificado las faltas
@@ -95,7 +100,7 @@ public class GestorFaltas {
      *  justificar también)
      */
     public void justificarFaltas(String apellidos, int faltas) {
-         
+        
 
     }
 
