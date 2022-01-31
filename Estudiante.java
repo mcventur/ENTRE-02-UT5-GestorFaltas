@@ -17,8 +17,10 @@ public class Estudiante {
      *  
      */
     public Estudiante(String lineaDatos) {
-         
-
+    nombre = lineaDatos.split(SEPARADOR)[0];
+    apellidos = lineaDatos.split(SEPARADOR)[1];
+    faltasNoJustificadas = Integer.parseInt(lineaDatos.split(SEPARADOR)[2]);
+    faltasJustificadas = Integer.parseInt(lineaDatos.split(SEPARADOR)[3]);
     }
 
 

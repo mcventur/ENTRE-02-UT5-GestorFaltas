@@ -2,7 +2,7 @@
 /**
  * Enumeration class TipoApercibimiento - write a description of the enum class here
  * 
- * @author (your name here)
+ * @author Itxaso
  * @version (version number or date here)
  */
 public enum TipoApercibimiento
