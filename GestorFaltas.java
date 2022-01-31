@@ -10,10 +10,11 @@ import java.util.Scanner;
  *
  */
 public class GestorFaltas {
-     
-
+    Estudiante[] infoEstudiante; 
+    int total;
     public GestorFaltas(int n) {
-         
+        infoEstudiante = new Estudiante [n]; 
+        total = 0;
     }
 
     /**
@@ -21,7 +22,7 @@ public class GestorFaltas {
      * false en otro caso
      */
     public boolean cursoCompleto() {
-        return false;
+        return total == infoEstudiante.length;
     }
 
     /**
@@ -37,11 +38,30 @@ public class GestorFaltas {
      *    
      */
     public void addEstudiante(Estudiante nuevo) {
-        
-
+        if(total<infoEstudiante.length && !compararApellidos(nuevo.getApellidos()))    {
+            infoEstudiante[total] = nuevo;
+            total++;
+        }
+        else    {
+            if(total==infoEstudiante.length)    {
+                System.out.println("ERROR La lista esta completa");
+            }
+            if(compararApellidos(nuevo.getApellidos()))  {
+                System.out.println("ERROR el estudiante ya existe");
+            }
+        }
+    
     }
 
-
+    private boolean compararApellidos(String apellidos)   {
+        for(int i = 0;i<total;i++)   {
+            if(infoEstudiante[i].getApellidos().compareToIgnoreCase(apellidos))    {
+                return true;
+            };
+        } 
+        return false;
+    }
+    
     /**
      * buscar un estudiante por sus apellidos
      * Si está se devuelve la posición, si no está se devuelve -1
@@ -51,8 +71,8 @@ public class GestorFaltas {
      *  
      */
     public int buscarEstudiante(String apellidos) {
-         
-        return 0;
+        int index = infoEstudiante.indexOf(apellidos);
+        return index;
     }
 
     /**
