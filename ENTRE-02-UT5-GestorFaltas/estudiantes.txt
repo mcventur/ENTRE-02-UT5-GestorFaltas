@@ -1,0 +1,16 @@
+  ander ibai  ,  Ruiz Sena , 12, 23 
+ Diego nikolay , hristozov pardo,13, 8
+ pedro josé   andrés  ,  Troya Baztarrica , 42, 6 
+Catarina    rafaela , Layos Almeida , 45, 23
+  Javier  ,  Suescun Andreu , 39, 9 
+Xabier , Petrov Monforte, 35, 43
+David, Astrain Sánchez, 22, 17
+Carla, Iriso Flamarique, 25, 25
+Catarina    rafaela , Layos Almeida , 45, 23
+eneko, Melero Gaona  , 15, 21
+julen, Duque Puyal, 5, 55
+  Asier  Elorri, Oyarzun Guallar,  45, 7
+David, Astrain Sánchez, 32, 17
+ Anthony , chamorro arevalo, 5, 13   
+  andrés, petrov mayor, 47, 33
+saúl, aquerreta barberena, 4, 2

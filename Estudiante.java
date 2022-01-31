@@ -1,11 +1,17 @@
+import java.util.StringTokenizer;
+
 /**
  * Un objeto de esta clase guarda la información de un estudiante
  *
  */
 public class Estudiante {
+
     private final static String SEPARADOR = ",";
+
     private String nombre;
+    private String tempNombre;
     private String apellidos;
+
     private int faltasNoJustificadas;
     private int faltasJustificadas;
 
@@ -13,14 +19,39 @@ public class Estudiante {
      *  
      *  Inicializa los atributos a partir de la información recibida
      *  Esta información se encuentra en lineaDatos
-     *  (ver enunciado) 
-     *  
+     *  (ver enunciado)
      */
     public Estudiante(String lineaDatos) {
          
+        String[] clean = lineaDatos.trim().split(SEPARADOR);
+
+        tempNombre = clean[0].trim();
+        nombre = esSimpleOCompuesto();
+        apellidos = clean[1].toUpperCase().trim();
+        faltasNoJustificadas = Integer.parseInt(clean[2].trim());
+        faltasJustificadas = Integer.parseInt(clean[3].trim());
 
     }
 
+    private boolean tieneMas(){
+        StringTokenizer name = new StringTokenizer(tempNombre);
+        if(name.countTokens()>1){
+            return true;
+        }
+        return false;
+    }
+
+    private String esSimpleOCompuesto(){
+        if(!tieneMas()){
+            nombre = tempNombre.substring(0,1).toUpperCase() + tempNombre.substring(1);
+            return nombre;
+        }
+        String temp2nombre = tempNombre.replaceAll("\\s{2,}"," "); //Limpio los espacios entre las palabras
+        String[] complejo = temp2nombre.split(" "); // Las divido con un split para manipularlas de forma independiente
+
+
+        return nombre;
+    }
 
     /**
      * accesor para el nombre completo
@@ -52,7 +83,7 @@ public class Estudiante {
     }
 
     /**
-     * accesor para el nº de faltas no justificadas
+     * accesor para el número de faltas no justificadas
      */
     public int getFaltasNoJustificadas() {
         return faltasNoJustificadas;

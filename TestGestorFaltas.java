@@ -1,10 +1,10 @@
 /**
- * Punto de entrada a la aplicación
- */
+ * Punto de entrada a la aplicaciï¿½n
+ * @author Jonathan Del Arco */
 public class TestGestorFaltas {
     /**
-     * Se acepta como argumento del main() el nº máximo de estudiantes
-     * y una vez creado el gestor de faltas se muestra la información solicitada
+     * Se acepta como argumento del main() el nï¿½ mï¿½ximo de estudiantes
+     * y una vez creado el gestor de faltas se muestra la informaciï¿½n solicitada
      * (ver enunciado)
      */
     public static void main(String[] args) {
